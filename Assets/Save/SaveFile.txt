@@ -1,0 +1,1 @@
+﻿{"nickname":"권찬영","energy":0,"soldierList":[{"name":"진흙병사","amount":0,"price":150,"ePs":1},{"name":"바위병사","amount":0,"price":1000,"ePs":1}]}
