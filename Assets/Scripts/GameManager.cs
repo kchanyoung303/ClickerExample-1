@@ -7,9 +7,13 @@ public class GameManager : monosingleton<GameManager>
 {
     [SerializeField]
     private User user = null;
+    public User CurrentUser { get { return user; } }
+
     private string SAVE_PATH = "";
     private readonly string SAVE_FILENAME = "/SaveFile.txt";
-    private void Start()
+
+    public UIManager uiManager { get; private set; }
+    private void Awake()
     {
         SAVE_PATH = Application.dataPath + "/Save";
         if (!Directory.Exists(SAVE_PATH))
@@ -17,6 +21,9 @@ public class GameManager : monosingleton<GameManager>
             Directory.CreateDirectory(SAVE_PATH);
         }
         LoadFromJson();
+        uiManager = FindObjectOfType<UIManager>();
+
+        InvokeRepeating("SaveToJson", 1f, 60f);
     }
     private void LoadFromJson()
     {
